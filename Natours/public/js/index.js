@@ -4,6 +4,7 @@ import { logout } from "./login";
 import { displayMap } from "./leaflet";
 import { updateSettings } from "./updateSettings";
 import { bookTour } from "./stripe";
+import { showAlert } from "./alert";
 const form = document.querySelector(".form");
 const MapPage = document.getElementById("map");
 const logOutBtn = document.querySelector(".nav__el--logout");
@@ -67,4 +68,9 @@ if (MapPage) {
 
 if (logOutBtn) {
   logOutBtn.addEventListener("click", logout);
+}
+
+const alertMessage = document.querySelector("body").dataset.alert;
+if (alertMessage) {
+  showAlert("success", alertMessage, 10);
 }

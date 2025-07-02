@@ -5,6 +5,18 @@ const catchAsync = require("./../utils/catchAsync");
 const AppError = require("./../utils/appError");
 const factory = require("./factory");
 
+exports.alerts = (req, res, next) => {
+  // the req.query.alert comes from the bookingController
+  const alert = req.query.alert;
+  if (alert === "booking") {
+    // alert variable will be available in base.pug now
+    res.locals.alert =
+      "Your booking was successful!. If your booking does not show up here immediatly, please come back later.";
+  }
+
+  next();
+};
+
 exports.getOverviewPage = catchAsync(async (req, res) => {
   const tours = await Tour.find();
 
