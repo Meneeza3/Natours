@@ -20,7 +20,7 @@ const createSendToken = (user, statsCode, req, res) => {
   const cookieOption = {
     expires: new Date(Date.now() + process.env.JWT_COOKIE_EXPIRES_IN * 24 * 60 * 60 * 1000),
     httpOnly: true,
-    secure: req.secure || req.headers("x-forwarded-photo") === "https",
+    secure: req.secure || req.headers["x-forwarded-proto"] === "https",
   };
 
   if (process.env.NODE_ENV === "production") cookieOption.secure = true; // In development we are not using https

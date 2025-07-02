@@ -7,6 +7,7 @@ const tourRouter = require("./routes/tourRoutes");
 const userRouter = require("./routes/userRoutes");
 const reviewRouter = require("./routes/reviewRoutes");
 const bookingRouter = require("./routes/bookingRoutes");
+const bookingController = require("./controllers/bookingController");
 const viewRouter = require("./routes/viewRoutes");
 const reteLimit = require("express-rate-limit");
 const helmet = require("helmet");
@@ -16,6 +17,7 @@ const hpp = require("hpp");
 const cookieParser = require("cookie-parser");
 const compression = require("compression");
 const cors = require("cors");
+const { json } = require("stream/consumers");
 
 const app = express();
 
@@ -75,6 +77,14 @@ const limiter = reteLimit({
   message: "Too many requests from this IP, Please try again after 1 hour!",
 });
 app.use("/api", limiter);
+
+// webhookCheckout cant deal with the json format
+app.use(
+  "/webhook-checkout",
+  express.raw({ type: "application/json" }),
+  bookingController.webhookCheckout
+);
+// https://f840-197-35-198-30.ngrok-free.app
 
 app.use(express.json({ limit: "10kb" }));
 app.use(cookieParser());
