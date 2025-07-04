@@ -13,7 +13,7 @@ const { json } = require("express");
 exports.getCheckoutSession = catchAsync(async (req, res, next) => {
   // 1- get the booked tour
   const tour = await Tour.findById(req.params.tourId);
-
+  if (!tour) return next(new AppError("No Tour found with this Id", 400));
   // 2- create checkout session
   // 2-1 session details
   const session = await stripe.checkout.sessions.create({
