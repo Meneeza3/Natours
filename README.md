@@ -81,13 +81,22 @@ Create a file named `config.env` in the root directory and add:
 NODE_ENV=development
 PORT=3000
 DATABASE=mongodb+srv://...
+DATABASE_PASSWORD=YOUR DB PASSWORD
 JWT_SECRET=your_jwt_secret
 JWT_EXPIRES_IN=90d
 JWT_COOKIE_EXPIRES_IN=90
+
+# Mailtrap for development
 EMAIL_USERNAME=your_email@example.com
-EMAIL_PASSWORD=your_password
 EMAIL_HOST=smtp.mailtrap.io
-EMAIL_PORT=2525
+EMAIL_PASSWORD=your_password
+EMAIL_PORT=587
+EMAIL_FROM= your_email
+
+# Gmail for production
+GMAIL_USER = your email
+GMAIL_PASSWORD = your password
+
 STRIPE_SECRET_KEY=sk_test_xxx
 STRIPE_WEBHOOK_SECRET=whsec_xxx
 ```
