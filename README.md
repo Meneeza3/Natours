@@ -108,3 +108,9 @@ npm run start:dev
 ```
 
 Open `http://localhost:3000` to access the app.
+
+## 📚 API Documentation
+
+<a href="https://documenter.getpostman.com/view/43030364/2sB34cngvX#d9649651-f7df-4d37-ba2d-c39a0aca735b" style="color: orange; font-weight: bold;">
+🔗 View Full API Docs on Postman
+</a>
